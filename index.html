@@ -199,13 +199,6 @@
             font-size: 1.1rem;
         }
 
-        /* .frame-container {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-        } */
-
         .centered-image {
             position: absolute;
             top: 50%;
@@ -274,6 +267,61 @@
             position: relative;
             height: 100vh;
             width: 100%;
+        }
+
+        /* Carousel */
+        carousel {
+            display: flex;
+            overflow: clip;
+            position: relative;
+            gap: 10rem;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        carousel::before,
+        carousel::after {
+            content: "";
+            background: linear-gradient(
+                to right,
+                rgb(37, 37, 37) 0%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            position: absolute;
+            height: 100%;
+            width: 10rem;
+            z-index: 2;
+        }
+
+        carousel::after {
+            right: 0;
+            top: 0;
+            transform: rotateZ(180deg);
+        }
+
+        carousel::before {
+            left: 0;
+            top: 0;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-10rem * 8));
+            }
+        }
+
+        carousel .logo {
+            object-fit: contain;
+            cursor: pointer;
+            min-height: 10rem;
+            max-height: 10rem;
+            max-width: 10rem;
+            border-radius: 0.25rem;
+            filter: grayscale(100%);
+            animation: scroll 10s linear infinite;
         }
     </style>
 </head>
@@ -372,13 +420,40 @@
             
         </section>
     </div>
-    
-    <div class="slider">
-        <section id="sectionslider">
-            
-        </section>
-    </div>
 
+<div id="svg-container" style="height: 150vh; background-color: transparent; justify-content: center;align-items: center;">
+    <svg id="ordered-animated-svg" style="background-color: #000" width="100%" height="100vh" viewBox="0 0 161 868" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path id="primero" d="M57.4861 0.97998V4.2784" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
+        <path id="segundo" d="M57.4861 8.08984V91.635" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="9.37 5.2"/>
+        <path id="tercero" d="M57.4861 93.5481V96.8465L60.3081 98.5617" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
+        <path id="cuarto" d="M63.4822 100.497L106.34 126.598" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="9.13 5.07"/>
+        <path id="quinto" d="M107.93 127.566L110.745 129.281V132.579" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
+        <path id="sexto" d="M110.745 136.193V245.708" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="8.88 4.93"/>
+        <path id="septimo" d="M110.745 247.511V250.809L107.916 252.502" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
+        <path id="octavo" d="M104.654 254.452L5.78833 313.508" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="9.33 5.19"/>
+        <path id="noveno" d="M4.15381 314.483L1.32446 316.177V319.475" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
+        <path id="decimo" d="M1.32446 323.191V435.931" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="9.14 5.08"/>
+        <path id="onceavo" d="M1.32446 437.793V441.091L4.14647 442.799" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
+        <path id="doceavo" d="M7.18091 444.646L107.857 505.755" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="8.74 4.85"/>
+        <path id="treceavo" d="M109.382 506.678L112.196 508.386V511.684" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
+        <path id="catorceavo" d="M112.197 515.342L112.197 868" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="8.98 4.99"/>
+    </svg>
+</div>
+<div class="brands">
+    <carousel>
+        <img class="logo" src="../spay/assets/american.png" />
+        <img class="logo" src="../spay/assets/american.png" />
+        <img class="logo" src="../spay/assets/discover.svg" />
+        <img class="logo" src="../spay/assets/discover.svg" />
+        <!--<img class="logo" src="">
+      
+        <!--DOUBLE-->
+        <img class="logo" src="../spay/assets/american.png" />
+        <img class="logo" src="../spay/assets/american.png" />
+        <img class="logo" src="../spay/assets/discover.svg" />
+        <img class="logo" src="../spay/assets/discover.svg" />
+    </carousel>
+</div>
     <script>
         let processedMoney = 9950999;
         const moneyElement = document.getElementById('processedMoney');
@@ -521,6 +596,54 @@
                     }
                 });
             });
+        });
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const svg = document.getElementById("ordered-animated-svg");
+        const paths = [
+            "primero",
+            "segundo",
+            "tercero",
+            "cuarto",
+            "quinto",
+            "sexto",
+            "septimo",
+            "octavo",
+            "noveno",
+            "decimo",
+            "onceavo",
+            "doceavo",
+            "treceavo",
+            "catorceavo",
+        ];
+
+        // Crear una línea de tiempo GSAP
+        const timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#svg-container",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true,
+                pin: true,
+            },
+        });
+
+        // Iterar sobre los IDs en el orden correcto
+        paths.forEach((id) => {
+            const path = document.getElementById(id);
+            const pathLength = path.getTotalLength();
+
+            // Configuración inicial de stroke
+            path.style.strokeDasharray = pathLength;
+            path.style.strokeDashoffset = pathLength;
+
+            // Añadir al timeline en orden
+            timeline.to(path, {
+                strokeDashoffset: 0,
+                duration: 1,
+                ease: "power1.inOut",
+            }, "<+=0.2"); // Retraso opcional entre las animaciones
         });
     </script>
 </body>
