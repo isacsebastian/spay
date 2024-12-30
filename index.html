@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/iji7omf.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         * {
-            font-family: 'Poppins', sans-serif !important;
+            font-family: "sofia-pro", sans-serif !important;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -323,13 +324,17 @@
             filter: grayscale(100%);
             animation: scroll 10s linear infinite;
         }
+        
     </style>
 </head>
 <body>
     <div class="container">
         <div class="coordinates">
-            <p>-2.911632198089882,L</p>
-            <p>-79.00263205962538 P</p>
+            <!-- <p>-2.911632198089882,</p>
+            <p>-79.00263205962538 </p>
+             -->
+            <p>-2.91163219 N°</p>
+            <p>-79.0026320 S° </p>
         </div>
         <div class="coordinatesRight">
             <p id="processedMoney">Processed Money: 9,950,999 USD</p>
@@ -381,9 +386,8 @@
     <div class="Title">
         <section id="home" class="home">
             <h1 id="text" class="overlay-text">
-                La Solución de Cobro <br>
-                Global para Empresas<br>
-                Tecnológicas
+                Pagos Inteligentes para<br>
+                Empresas Globales
             </h1>
             <div id="button-container">
                 <button class="contact-button">Contactar</button>
@@ -406,7 +410,7 @@
                     <span>Cobra forma global con rapidez</span>
                 </div>
                 <div class="line">
-                    <span>y eficiencia Ophimiza tu flujo de</span>
+                    <span>y eficiencia. Optimiza tu flujo de</span>
                 </div>
                 <div class="line">
                     <span>efectivo. Haz crecer tu negocio.</span>
@@ -415,14 +419,13 @@
         </section>
     </div>
 
-    <div class="slider">
-        <section id="sectionslider">
-            
-        </section>
-    </div>
+   <div class="lineanimate">
+    <img class="logo" src="../spay/assets/celular.png" />
+    <img class="logo" src="../spay/assets/celular.png" />
 
-<div id="svg-container" style="height: 150vh; background-color: transparent; justify-content: center;align-items: center;">
-    <svg id="ordered-animated-svg" style="background-color: #000" width="100%" height="100vh" viewBox="0 0 161 868" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+    <div id="svg-container" style="height: 120vh; background-color: transparent; justify-content: center;align-items: center;">
+    <svg id="ordered-animated-svg" width="100%" height="100vh" viewBox="0 0 161 868" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path id="primero" d="M57.4861 0.97998V4.2784" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
         <path id="segundo" d="M57.4861 8.08984V91.635" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="9.37 5.2"/>
         <path id="tercero" d="M57.4861 93.5481V96.8465L60.3081 98.5617" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
@@ -439,12 +442,17 @@
         <path id="catorceavo" d="M112.197 515.342L112.197 868" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="8.98 4.99"/>
     </svg>
 </div>
+
+</div>
+
 <div class="brands">
     <carousel>
         <img class="logo" src="../spay/assets/american.png" />
         <img class="logo" src="../spay/assets/american.png" />
         <img class="logo" src="../spay/assets/discover.svg" />
         <img class="logo" src="../spay/assets/discover.svg" />
+        <img class="logo" src="../spay/assets/discover.svg" />
+
         <!--<img class="logo" src="">
       
         <!--DOUBLE-->
@@ -452,10 +460,12 @@
         <img class="logo" src="../spay/assets/american.png" />
         <img class="logo" src="../spay/assets/discover.svg" />
         <img class="logo" src="../spay/assets/discover.svg" />
+        <img class="logo" src="../spay/assets/discover.svg" />
+
     </carousel>
 </div>
     <script>
-        let processedMoney = 9950999;
+        let processedMoney = 9930699;
         const moneyElement = document.getElementById('processedMoney');
         let isInitialAnimationDone = false;
 
@@ -641,9 +651,9 @@
             // Añadir al timeline en orden
             timeline.to(path, {
                 strokeDashoffset: 0,
-                duration: 1,
+                duration: 2,
                 ease: "power1.inOut",
-            }, "<+=0.2"); // Retraso opcional entre las animaciones
+            }, "<+=0.4"); // Retraso opcional entre las animaciones
         });
     </script>
 </body>
